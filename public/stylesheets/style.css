@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  font: 14px Futura, "Franklin Gothic", Helvetica, Arial, sans-serif;
+  width: 650px;
+  margin: 30px auto;
+  background-color: #2f6fad;
+}
+form {
+  display: block;
+  padding: 50px;
+  background-color: azure;
+}
+#submit {
+  padding: 15px;
+  border-radius: 15px;
+}
+
