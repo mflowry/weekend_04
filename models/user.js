@@ -38,7 +38,58 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
         cb(null, isMatch);
     });
 };
+module.exports=mongoose.model('User',UserSchema);
+//var express = require('express');
+//var router = express.Router();
+//var path = require('path');
+//var list = require('../models/list.json');
+//var fs = require('fs');
+//var listArray = [];
+//
+///* GET user page. */
+//router.get('/users', function(req, res) {
+//    console.log("getting");
+//    var file = path.join(__dirname, '../models/list.json');//create shortcut for path
+//    fs.readFile(file, 'utf8', function (err, data) {
+//        if (err) {
+//            next(err);//next middleware--error handler
+//        } else {
+//            listArray = JSON.parse(data);
+//            console.log(listArray);
+//            res.render('users', {"title":title, "rating":rating, "runtime": runtime });//return list
+//        }
+//    });
+//});
+////post new list item
+//router.post('/', function(req, res, next) {
+//    console.log("posting");
+//    listArray = list;
+//    listArray.push(req.body);
+//    console.log(listArray);
+//
+//    var files = path.join(__dirname, '../models/list.json');
+//
+//    fs.writeFile(files, JSON.stringify(listArray), function (err) {
+//        if (err) {
+//            console.log(err);
+//            res.sendStatus(200).send(err);
+//        } else {
+//            res.json(listArray);
+//        }
+//    });
+//});
+//module.exports = router;
 
-
-
-module.exports = mongoose.model('User', UserSchema);
+//router.get('/', function(req, res) {
+//    console.log("getting");
+//    var file = path.join(__dirname, '../models/students.json');//create shortcut for path
+//    fs.readFile(file, 'utf8', function (err, data) {
+//        if (err) {
+//            next(err);//next middleware--error handler
+//        } else {
+//            studentArray = JSON.parse(data);
+//            console.log(studentArray);
+//            res.json(students);//return student list
+//        }
+//    });
+//});

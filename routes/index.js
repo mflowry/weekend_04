@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var path = require('path');
+var users = require('./users');
 
 /* GET home page. */
 router.get("/", function(req,res,next){

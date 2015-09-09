@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 var passport = require('passport');
 var session = require('express-session');
 var localStrategy = require('passport-local').Strategy;
@@ -11,6 +12,7 @@ var mongoose = require('mongoose');
 var mongoURI = "mongodb://localhost:27017/users";
 var MongoDB = mongoose.connect(mongoURI).connection;
 var register = require('./routes/register');
+
 
 MongoDB.on('error', function (err) {
     console.log('mongodb connection error', err);
@@ -22,7 +24,8 @@ MongoDB.once('open', function () {
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var User = require('./models/user');
+var User = require('./models/user.js');
+var list = require('./routes/list');//create list route
 
 var app = express();
 
@@ -65,6 +68,7 @@ passport.use('local', new localStrategy({
         usernameField: 'username'
     },
     function (req, username, password, done) {
+        console.log("This is the user: ", username);
         User.findOne({username: username}, function (err, user) {
             if (err) throw err;
             if (!user)
@@ -83,6 +87,8 @@ passport.use('local', new localStrategy({
 
 app.use('/', routes);
 app.use('/users', users);
+//app.use('/user', User);
+app.use('/list', list);
 app.use('/register', register);
 
 
