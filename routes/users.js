@@ -27,24 +27,24 @@ router.get('/', function(req, res, next) {
 
 //post new list item
 //$('form').on('click','#submit', function(){
-//  router.post('/', function(req, res, next) {
-//    console.log("posting");
-//    listArray = list;
-//    listArray.push(req.body);
-//    console.log(listArray);
-//
-//    var files = path.join(__dirname, '../models/list.json');
-//
-//    fs.writeFile(files, JSON.stringify(listArray), function (err) {
-//      if (err) {
-//        console.log(err);
-//        res.sendStatus(200).send(err);
-//      } else {
-//        res.json(listArray);
-//      }
-//    });
-//  });
-//});
+  router.post('/', function(req, res, next) {
+    console.log("posting");
+    listArray = list;
+    listArray.push(req.body);
+    console.log(listArray);
+
+    var files = path.join(__dirname, '../models/list.json');
+
+    fs.writeFile(files, JSON.stringify(listArray), function (err) {
+      if (err) {
+        console.log(err);
+        res.sendStatus(200).send(err);
+      } else {
+        res.render('users', {list: listArray});//return list
+      }
+    });
+  });
+
 
 module.exports = router;
 

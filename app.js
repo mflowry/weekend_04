@@ -25,7 +25,6 @@ MongoDB.once('open', function () {
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var User = require('./models/user.js');
-var list = require('./routes/list');//create list route
 
 var app = express();
 
@@ -87,8 +86,7 @@ passport.use('local', new localStrategy({
 
 app.use('/', routes);
 app.use('/users', users);
-//app.use('/user', User);
-app.use('/list', list);
+app.use('/user', User);
 app.use('/register', register);
 
 
